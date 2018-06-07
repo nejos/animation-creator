@@ -28,7 +28,9 @@ def handle_upload():
      source=uploaded_file
   )
 
-  orders.load(current_user()).add_photo(file_ref)
+  photos_list.append(destination_name)
+  
+  #orders.load(current_user()).add_photo(file_ref)
 
   return "OK" 
 
@@ -37,6 +39,14 @@ def proceed():
   order = orders.load(current_user())
   handler.handle(order.snapshot())
 
+@app.route("/proceed")
+def proceed_animation():
+  ani_request= {
+    "email": request.request.email,
+    "photos":  photos_list
+  }
+
+  requestsQueue.send_message(MessageBody=json.dumps(ani_request))
 @app.route("/prepare")
 def prepare():
   return render_template(
