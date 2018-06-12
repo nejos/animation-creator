@@ -1,10 +1,11 @@
 import boto3
 import os
+import json
 
 from flask import Flask
 from flask import render_template, request, flash
 from media.s3_storage import S3MediaStorage
-from media.name_generator import generate_name
+from media.generate_name import generate_name
  
 app = Flask(__name__)
 
