@@ -4,6 +4,7 @@ import os
 from flask import Flask
 from flask import render_template, request, flash
 from media.s3_storage import S3MediaStorage
+from media.name_generator import generate_name
  
 app = Flask(__name__)
 
