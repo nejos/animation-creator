@@ -3,9 +3,14 @@
     <title>Welcome</title>
   </head>
   <body>
-   <h1>{{ invitation }}</h1>
-   <form method="POST">
-     <input name="my_file" type="file"/>
+   <h3>You are going to create animation with following photos:</h3>
+   <ul>
+     {% for photo in photos %}
+       <li>{{photo}}</li>
+     {% endfor%}
+   </ul>
+   <form method="POST" action="/proceed">
+     <input name="email" type="email"/>
      <button type="submit">let's do this</button>
    </form>
   </body>
