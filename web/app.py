@@ -29,7 +29,7 @@ def handle_upload():
     flash('No file part')
     return redirect(request.url)
   
-  uploaded_file = request.files['uploaded_file']
+  uploaded_file = request.files.get("uploaded_file")
   file_ref = generate_name(uploaded_file.filename)
   media_storage.store(
      dest=file_ref,
@@ -39,7 +39,7 @@ def handle_upload():
   photos_list.append(file_ref)
   
  
-  return render_template('prepare.html') 
+  return prepare() 
 
 @app.route("/proceed", methods=['POST'])
 def proceed_animation():
@@ -49,11 +49,13 @@ def proceed_animation():
   }
 
   requestsQueue.send_message(MessageBody=json.dumps(ani_request))
-  return  "OK"
+  return "OK"
+
 @app.route("/prepare")
 def prepare():
   return render_template(
     'prepare.html',
+    photos=photos_list,
     invitation="the only limit is yourself" 
   )
 

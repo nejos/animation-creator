@@ -6,8 +6,8 @@
    <h3>You are going to create animation with following photos:</h3>
    <ul>
      {% for photo in photos %}
-       <li>{{photo}}</li>
-     {% endfor%}
+       <li>{{ photo }}</li>
+     {% endfor %}
    </ul>
    <form method="POST" action="/proceed">
      <input name="email" type="email"/>
