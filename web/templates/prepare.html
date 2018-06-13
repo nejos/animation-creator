@@ -1,17 +1,40 @@
-<html>
-  <head>
-    <title>Welcome</title>
-  </head>
-  <body>
-   <h3>You are going to create animation with following photos:</h3>
-   <ul>
-     {% for photo in photos %}
-       <li>{{ photo }}</li>
-     {% endfor %}
-   </ul>
-   <form method="POST" action="/proceed">
-     <input name="email" type="email"/>
-     <button type="submit">let's do this</button>
+{% extends 'layout.html' %}
+
+{% block body %}
+
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <h3><li class="breadcrumb-item active" aria-current="page">    Animator</li$
+  </ol>
+</nav>
+
+<div class="container">
+        <hr/>
+	<div class="header"><center><h1>Wybrałeś następujące zdjęcia do stworzenia animacji</h1></center></d$
+        <hr/>
+
+<div class="container">
+<br><br>
+
+<ul class="list-group">
+{% for photo in photos %}  	
+	<li class="list-group-item">{{ photo }}</li>
+{% endfor %}
+</ul>
+<br>
+
+<center>
+<span class="label label-primary">Podaj swój e-mail</span>
+<br><br>
+<form method="POST" action="/proceed">
+     <input name="email" type="email" class="col-md-12"/>
+	<div class="col-md-12">
+	<br><button type="submit" class="btn btn-success">Przejdź dalej</button>
+	</div>
    </form>
-  </body>
-</html>
+</center>
+</div>
+{% endblock %}
+
+
+
